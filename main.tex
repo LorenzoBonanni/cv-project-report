@@ -1,71 +1,234 @@
-\documentclass{article}
-\usepackage{graphicx} 
+% \documentclass{article}
+% \usepackage{graphicx} 
+% \usepackage[utf8]{inputenc}
+% \usepackage{amsmath, amsfonts, amssymb, bm}
+% \usepackage{graphicx, geometry, wrapfig, float, multicol, mathtools, array, csquotes, lscape, setspace}
+% \usepackage[dvipsnames]{xcolor}
+% \usepackage[export]{adjustbox}
+% \usepackage{tikz, tcolorbox}
+% \usetikzlibrary{positioning, fit}
+% \usepackage{multirow, booktabs, makecell, diagbox}
+% \usepackage{soul}
+% \usepackage{hyperref}
+% \usepackage{xstring}
+% \usepackage{titling}
+
+% \newcommand{\subtitle}[1]{%
+%   \posttitle{%
+%     \par\end{center}
+%     \begin{center}\large#1\end{center}
+%     \vskip0.5em}%
+% }
+
+% \hypersetup{
+%     colorlinks=true,
+%     allcolors=.,
+%     pdftitle={PDF TITLE},
+%     linkcolor=black
+%     }
+% \geometry{
+%     top=3.5cm,
+%     bottom=3.0cm,
+%     outer=2.0cm,
+%     inner=3.0cm
+% }
+% % Required for inserting images
+% \setlength{\parindent}{0mm}
+% \DeclareMathOperator{\EX}{\mathbb{E}}% expected value
+% \newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+% \renewcommand{\ref}[1]{\textbf{\ref{#1}}}
+
+% \begin{document}
+% \nocite{*}
+
+% \title{ \normalsize \textsc{}
+% 		\\ [2.0cm]
+% 		\HRule{1.5pt} \\
+% 		\LARGE \textbf{\uppercase{Neural Network Optimization for Mobile Deployment}
+% 		\HRule{2.0pt} \\ [0.6cm] \LARGE{Computer Vision Course Project \\Academic Year: 2022/2023} \vspace*{10\baselineskip}}
+% 		}
+
+% % Project Title, Master degree, Course, Academic Year, Author(s)
+% \author{\textbf{Author} \\ 
+%     Lorenzo Bonanni\\
+%     lorenzo.bonanni@studenti.univr.it}
+
+
+% \maketitle
+% \newpage
+% \tableofcontents
+
+
+% \bibliographystyle{abbrv}
+% \bibliography{resources}
+
+
+% \end{document}
+
+
+\documentclass[a4paper, twoside, 11pt]{report}
+
+%%%%%%%%%%%%%%%%%
+%%BASIC PACKAGES%%
+%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsfonts, amssymb, bm}
-\usepackage{graphicx, geometry, wrapfig, float, multicol, mathtools, array, csquotes, lscape, setspace}
-\usepackage[dvipsnames]{xcolor}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx, geometry, wrapfig, xcolor, float, multicol, mathtools, array, csquotes, lscape, setspace}
 \usepackage[export]{adjustbox}
 \usepackage{tikz, tcolorbox}
-\usetikzlibrary{positioning, fit}
 \usepackage{multirow, booktabs, makecell, diagbox}
-\usepackage{soul}
-\usepackage{hyperref}
-\usepackage{xstring}
-\usepackage{titling}
+\usepackage{microtype}
 
-\newcommand{\subtitle}[1]{%
-  \posttitle{%
-    \par\end{center}
-    \begin{center}\large#1\end{center}
-    \vskip0.5em}%
-}
 
-\hypersetup{
-    colorlinks=true,
-    allcolors=.,
-    pdftitle={PDF TITLE},
-    linkcolor=black
-    }
+%%%%%%%%%%%%%%%%%%%%%
+%%OPTIONAL PACKAGES%%
+%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{pdfpages} %insert pdf 
+%\usepackage[version=4]{mhchem} %insert chemical formulas
+%\usepackage{chemfig} %draw molecules and reactions
+%\usepackage{siunitx} %SI units in mathematical formula using \si{} in the math environment
+%\usepackage{listings} %add code portions
+%\usepackage{thmbox} %theorems boxes
+%\usepackage{arydshln} %dashed line in tables
+%\usepackage{chronosys} %create timelines
+%\usepackage[labelfont=bf]{caption} %bold figures' labels
+
+%\usepackage{lipsum} %testing purposes package
+\usepackage{svg}
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%LANGUAGE SELECTION%%
+%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[italian]{babel} %Italian
+\usepackage[english]{babel} %English
+
+%%%%%%%%%%%%%%%%
+%%BIBLIOGRAPHY%%
+%%%%%%%%%%%%%%%%
+% \usepackage[style=authoryear-comp]{biblatex}
+% \addbibresource{ref.bib}
+% \usepackage[
+%     backend=biber,
+%     style=authoryear,
+%     maxcitenames=2,
+%     sorting=nyt
+% ]{biblatex} %Imports biblatex package
+% \addbibresource{ref.bib} %Import the bibliography file
+% \renewcommand*{\nameyeardelim}{\addcomma\space} %Add comma between author and year
+
+%%%%%%%%%
+%%STYLE%%
+%%%%%%%%%
+% page style
 \geometry{
     top=3.5cm,
     bottom=3.0cm,
     outer=2.0cm,
     inner=3.0cm
 }
-% Required for inserting images
-\setlength{\parindent}{0mm}
-\DeclareMathOperator{\EX}{\mathbb{E}}% expected value
-\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
-\renewcommand{\ref}[1]{\textbf{\ref{#1}}}
+
+% no indentation
+\setlength{\parindent}{0em}
+
+\onehalfspacing
+
+% chapter style
+% \usepackage[Bjarne]{fncychap} %Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{$\vert$}\hsp}{0pt}{\Huge\bfseries}
+
+% font
+\usepackage{times}
+
+% table of contents
+\newcommand{\romantableofcontents}{ % creates a table of contents with roman (i, ii, iii, ...) numbering of the pages
+    \newpage
+    \pagenumbering{roman}
+    \tableofcontents
+    \newpage
+    \pagenumbering{arabic}
+}
+
+% link style and pdf title
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    allcolors=.,
+    pdftitle={PDF TITLE},
+    }
+
+%%%%%%%%%%%%
+%%DOCUMENT%%
+%%%%%%%%%%%%
 
 \begin{document}
-\nocite{*}
+% \nocite{*}
 
-\title{ \normalsize \textsc{}
-		\\ [2.0cm]
-		\HRule{1.5pt} \\
-		\LARGE \textbf{\uppercase{Neural Network Optimization for Mobile Deployment}
-		\HRule{2.0pt} \\ [0.6cm] \LARGE{Computer Vision Course Project \\Academic Year: 2022/2023} \vspace*{10\baselineskip}}
-		}
+% title page
+\begin{titlepage}
+   \begin{center}
+        \vspace*{1cm}
+        
+        % logo 
+        % \includegraphics[width=0.25\textwidth]{}       
+        \includesvg[width=100pt]{univr}
+        \vspace{1.5cm}
+        
+        % university name and course
+        \large
+        \textbf{UNIVERSITÀ DEGLI STUDI DI VERONA}
+        
+        \vspace{0.5cm}
+        Computer Vision Course Project
+        
+        % title
+        \vspace{1.5cm}
+        \Large
+        Neural Network Optimization for Mobile Deployment
+   \end{center}
 
-% Project Title, Master degree, Course, Academic Year, Author(s)
-\author{\textbf{Author} \\ 
-    Lorenzo Bonanni\\
-    lorenzo.bonanni@studenti.univr.it}
+   \begin{flushright}
+        Artificial Intelligence Master's degree \\
+        Lorenzo Bonanni\\
+        VR495629
+   \end{flushright}
 
+   \begin{center}    
+        % academic year
+        \vfill
+        Academic year: 2022-2023
+            
+   \end{center}
+\end{titlepage}
 
-\maketitle
+% insert blank page after titlepage
 \newpage
-\tableofcontents
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+% table of contents
+\romantableofcontents
+    
+% document starts here
+
+% I suggest creating separate .tex for each chapters (in the chapter folder) and then use \include here to render them. This allows to edit chapters individually (faster compiling, especially here in overleaf) and to rearrange them more easily.
 
 \include{sections/motivation}
-\include{sections/sota}
-\include{sections/objectives}
-\include{sections/methodology}
-\include{sections/experiments}
-\include{sections/conclusion}
-\bibliographystyle{abbrv}
-\bibliography{resources}
+% \include{sections/sota}
+% \include{sections/objectives}
+% \include{sections/methodology}
+% \include{sections/experiments}
+% \include{sections/conclusion}
 
+%%%%%%%%%%%%
+%%APPENDIX%%
+%%%%%%%%%%%%
+
+\bibliographystyle{ieeetr}
+\bibliography{ref}
 
 \end{document}
